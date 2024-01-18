@@ -1,0 +1,1256 @@
+{
+	"info": {
+		"_postman_id": "740aecf8-0519-4276-8cc7-614c56a4c458",
+		"name": "DMC_project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20555818",
+		"_collection_link": "https://winter-comet-923890.postman.co/workspace/DMC_HRM~ff35a3d6-c7b4-4986-9432-0fa7b4bde3ef/collection/20555818-740aecf8-0519-4276-8cc7-614c56a4c458?action=share&source=collection_link&creator=20555818"
+	},
+	"item": [
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "Create_employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json()\r",
+									"\r",
+									"pm.environment.set(\"id\", jsonData.employee_id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employee_id\": \"DMC692\",\r\n    \"is_superuser\": true,\r\n    \"is_staff\": true,\r\n    \"is_active\": true,\r\n    \"username\": \"Mr.Ananta2244\",\r\n    \"email\": \"-\",\r\n    \"password\": \"123\",\r\n    \"phone_number\": \"-\",\r\n    \"image_location\": \"-\",\r\n    \"in_time\": \"08:00:00\",\r\n    \"out_time\": \"17:00:00\",\r\n    \"employee_type\": \"user\",\r\n    \"group_id\": 2,\r\n    \"groups\": [],\r\n    \"user_permissions\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/employee/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"employee",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update employee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employee_id\": \"DMC691\",\r\n    \"last_login\": null,\r\n    \"is_superuser\": true,\r\n    \"is_staff\": true,\r\n    \"is_active\": true,\r\n    \"date_joined\": \"2023-12-06T10:27:15.784588Z\",\r\n    \"username\": \"Mr.Tanim\",\r\n    \"email\": \"-\",\r\n    \"password\": \"bcrypt_sha256$$2b$12$dGR/963DpqNY11Vzh0Xva.NDBUrOIritiU7frcUS8Yb7la5qeoOcK\",\r\n    \"phone_number\": \"-\",\r\n    \"image_location\": \"-\",\r\n    \"in_time\": \"08:00:00\",\r\n    \"out_time\": \"17:00:00\",\r\n    \"registration_date\": \"2023-12-06\",\r\n    \"validity_date\": \"2028-12-04\",\r\n    \"employee_type\": \"user\",\r\n    \"image\": null,\r\n    \"UniqueCardNumber\": \"2023-01-01T00:00:00Z\",\r\n    \"cardNo\": 1701858435784,\r\n    \"group_id\": 2,\r\n    \"groups\": [],\r\n    \"user_permissions\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/employee/{{id}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"employee",
+								"{{id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "employee details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/employee/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"employee",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update employee with image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "employee_id",
+									"value": "DMC691",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "Mr. Tanim",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/API/Desktop/All Captains/tamim iqbal.jpg"
+								},
+								{
+									"key": "group_id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/employee/{{id}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"employee",
+								"{{id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Employee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/employee/{{id}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"employee",
+								"{{id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Image save",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "employee_id",
+									"value": "DMC686",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "Mr. Tanim",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/API/Desktop/All Captains/mohammad ashraful.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/employee/employee/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"employee",
+								"employee",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Designation",
+			"item": [
+				{
+					"name": "Add Designation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json()\r",
+									"\r",
+									"pm.environment.set(\"designation_id\", jsonData.id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"designation\": \"Burn Unit\",\r\n    \"description\": \"-\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/designation/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"designation",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Designation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 15,\r\n    \"designation\": \"Medicine Unit\",\r\n    \"description\": \"-\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/designation/{{designation_id}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"designation",
+								"{{designation_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find designation",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/designation/{{designation_id}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"designation",
+								"{{designation_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Designation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/designation/{{designation_id}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"designation",
+								"{{designation_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Department",
+			"item": [
+				{
+					"name": "Create Department",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json()\r",
+									"\r",
+									"pm.environment.set(\"department_id\", jsonData.id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"department\": \"nurology\",\r\n    \"description\": \"this department is for nurology\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/department/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"department",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find department",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/department/{{department_id}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"department",
+								"{{department_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Department",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 13,\r\n    \"department\": \"Orthopedix\",\r\n    \"description\": \"this department is for Orthopedix\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/department/{{department_id}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"department",
+								"{{department_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Department",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/department/{{department_id}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"department",
+								"{{department_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Device",
+			"item": [
+				{
+					"name": "Create Device",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json()\r",
+									"\r",
+									"pm.environment.set(\"device_id\", jsonData.device_id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"device_id\":\"DmcGate40\",\r\n    \"device_name\":\"Gate12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/device/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"device",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Device",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/device/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"device",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Single Device Info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/device/{{device_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"device",
+								"{{device_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Device",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"device_id\": \"DmcGate40\",\r\n    \"device_name\": \"Gate123\",\r\n    \"location\": \"-\",\r\n    \"device_ip\": \"10.10.20.133\",\r\n    \"active_status\": \"active\",\r\n    \"group_id\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/device/{{device_id}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"device",
+								"{{device_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Device",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/device/{{device_id}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"device",
+								"{{device_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Role",
+			"item": [
+				{
+					"name": "Create Role",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json()\r",
+									"\r",
+									"pm.environment.set(\"role_id\", jsonData.role_id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \r\n    \"role\": \"boss-7\",\r\n    \"role_description\": \"-\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/role/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"role",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/role/{{role_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"role",
+								"{{role_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role_id\": 16,\r\n    \"role\": \"boss-10\",\r\n    \"role_description\": \"-\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/role/{{role_id}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"role",
+								"{{role_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/role/{{role_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"role",
+								"{{role_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Group",
+			"item": [
+				{
+					"name": "Create Group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json()\r",
+									"\r",
+									"pm.environment.set(\"group_id\", jsonData.group_id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"group_id\": 2,\r\n    \"group_name\": \"surgeons\",\r\n    \"device_id\": \"Dmc10101\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/empgrp/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"empgrp",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Group",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/empgrp/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"empgrp",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Group",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"group_id\": 2,\r\n    \"group_name\": \"Medicine\",\r\n    \"device_id\": \"Dmc10101\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/empgrp/{{group_id}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"empgrp",
+								"{{group_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Group",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/empgrp/{{group_id}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"empgrp",
+								"{{group_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employee File",
+			"item": [
+				{
+					"name": "Create Employee file",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json()\r",
+									"\r",
+									"pm.environment.set(\"employeefile_id\", jsonData.id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "employee_id",
+									"value": "DMC692",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/API/Downloads/jXo3dRwkm5ht.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/empfiles/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"empfiles",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Employee File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/empfiles/{{employeefile_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"empfiles",
+								"{{employeefile_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Employee File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "employee_id",
+									"value": "DMC692",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/API/Downloads/Haefa2.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/empfiles/{{employeefile_id}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"empfiles",
+								"{{employeefile_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Employee File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/empfiles/{{employeefile_id}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"empfiles",
+								"{{employeefile_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json()\r",
+							"\r",
+							"pm.environment.set(\"Token\", jsonData.access)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"employee_id\": \"DMC24\",\r\n    \"password\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/login/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
